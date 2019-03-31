@@ -5,7 +5,9 @@ Written by hackerofdarkness on March 31st 2019
 Pokemon data editor for pokeemerald, written in QT. 
 
 //----------Current features:----------//
+
 Able to display images from a spritesheet
+
 Able to display icons
 
 //-----------------TODO:--------------------------------------//
