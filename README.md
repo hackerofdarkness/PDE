@@ -11,6 +11,7 @@ Able to display images from a spritesheet
 Able to display icons
 
 //-----------------TODO:--------------------------------------//
+
 Fix the cry button to play the right cry.
 
 Export the sprite images + pals.
