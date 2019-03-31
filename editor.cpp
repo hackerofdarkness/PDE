@@ -20,7 +20,10 @@
 #include <QSet>
 #include <QDesktopServices>
 #define Item_Max 60
-
+/* Created by hackerofdarkness for the use of modifying the pokemon data in the poke decomps.
+ * Files are located in the root directory, will work on: Windows, Mac, and Linux
+ * Under development
+*/
 
 Editor::Editor(QWidget *parent) :
     QMainWindow(parent),
@@ -35,11 +38,12 @@ Editor::~Editor()
     delete ui;
 }
 
-
+// saves the data to JSON files
 void JSON_Save()
 {
 
 }
+// replaces the data in the original files
 void appendPokeData(QString path, QString data)
 {
     QFile file(path);
@@ -53,7 +57,7 @@ void appendPokeData(QString path, QString data)
         box.setText("file could not be appended.\n");
     }
 }
-
+// checks what version you're running.
 QString pokemonVersion(QString root)
 {
 
@@ -61,7 +65,7 @@ QString pokemonVersion(QString root)
 
     return root;
 }
-
+// opens the directory
 void Editor::on_actionOpen_project_triggered()
 {
     // Allows the user to set the existing directory to the decomp project.
@@ -73,8 +77,7 @@ void Editor::on_actionOpen_project_triggered()
     pokemonVersion(root);
 }
 
-
-
+// saves the data and changes
 void Editor::on_actionSave_triggered()
 {
     QString pokemonName;
@@ -82,8 +85,7 @@ void Editor::on_actionSave_triggered()
     ui->pokemon_Name_Box->addItem(pokemonName);
 }
 
-
-
+// uses a single sprite sheet and breaks it
 void Editor::on_spriteSheets_clicked()
 {
     QString root;
@@ -104,6 +106,7 @@ void Editor::on_spriteSheets_clicked()
     QImage back;
     QImage shinyFront;
     QImage shinyBack;
+    // reacts are used to grab the specific location of the image
     QRect spriteBack(130, 1, 64, 64);
     QRect spriteShinyFront(65, 1, 64, 64);
     QRect spriteShinyBack(195, 1, 64, 64);
@@ -114,16 +117,14 @@ void Editor::on_spriteSheets_clicked()
     ui->back_image->setPixmap(QPixmap::fromImage(back));
     ui->shiny_front->setPixmap(QPixmap::fromImage(shinyFront));
     ui->shiny_back->setPixmap(QPixmap::fromImage(shinyBack));
-
     }
-
 }
-
+// Allows the user to select a cry
 void Editor::on_Cry_Button_clicked()
 {
     QString cry =  QFileDialog::getOpenFileName(this, tr("Open cry"),"", tr("wave (*.wav);;All Files (*)"));
 }
-
+// lets the user select the icon
 void Editor::on_Icons_clicked()
 {
     QString iconSheet =  QFileDialog::getOpenFileName(this, tr("Open icon sprite sheet"),"",
@@ -142,7 +143,7 @@ void Editor::on_Icons_clicked()
         ui->icon1->setPixmap(QPixmap::fromImage(iconSprite));
     }
 }
-
+// lets the user import a custom json file that contains the data
 void Editor::on_actionImport_pokemon_file_triggered()
 {
     QString fileImport =  QFileDialog::getOpenFileName(this, tr("Open pokemon json file"),"",
@@ -163,7 +164,7 @@ void Editor::on_pokemon_Name_Box_activated(const QString &arg1)
 }
 
 
-
+// redirect to the github page
 void Editor::on_pushButton_clicked()
 {
     QUrl url;
@@ -172,8 +173,7 @@ void Editor::on_pushButton_clicked()
     url.setPath("/hackerofdarkness/PDE");
     QDesktopServices::openUrl(url);
 }
-
-
+// redirect to the issues page
 void Editor::on_pushButton_3_clicked()
 {
     QUrl url;
